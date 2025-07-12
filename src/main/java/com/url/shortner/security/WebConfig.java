@@ -14,11 +14,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173")  // Match the exact frontend origin
+                .allowedOrigins(frontendUrl)  // Dynamically pulled from application.properties or env
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
-                .maxAge(3600); // Cache preflight responses for 1 hour
+                .maxAge(3600);
     }
-
 }
